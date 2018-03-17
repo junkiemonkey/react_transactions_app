@@ -1,0 +1,23 @@
+.header {
+  margin-bottom: 20px;
+  padding: 5px 0;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, .1) 0 0 5px 0px;
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    ul {
+      li {
+        display: inline-block;
+      }
+    }
+  }
+  &__link {
+    display: block;
+    text-decoration: none;
+    padding: 10px 15px;
+    &.active, &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+}

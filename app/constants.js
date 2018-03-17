@@ -1,0 +1,11 @@
+export const FETCH_DATA = 'FETCH_DATA';
+export const FETCH_BANKS = 'FETCH_BANKS';
+export const ADD_ITEM = 'ADD_ITEM';
+export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const GET_USER = 'GET_USER';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const TRANSACTIONS = 'TRANSACTIONS';
+export const BANKS = 'BANKS';
+export const DONE = 'DONE';
+export const FAIL = 'FAIL';

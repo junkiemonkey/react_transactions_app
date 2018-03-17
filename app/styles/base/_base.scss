@@ -1,0 +1,60 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+}
+
+body {
+  font: 16px Helvetica, Verdana, Arial, sans-serif;
+  background: #fafafa;
+}
+
+.container {
+  margin: auto;
+  padding: 0 10px;
+  max-width: 1170px;
+  @media (min-width: $desktop){
+    padding: 0;
+  }
+  //background-color: #fff;
+  //box-shadow: rgba(0, 0, 0, .1) 0 0 5px 0px;
+}
+
+.form-block {
+  margin-bottom: 15px;
+  input {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #ddd;
+    padding-left: 10px;
+    border-radius: 5px;
+    outline: none;
+  }
+  button {
+    width: 150px;
+    height: 35px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+  }
+  select {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #ddd;
+    padding-left: 10px;
+    border-radius: 5px;
+    outline: none;
+    option {
+      &[disabled] {
+        display: none;
+      }
+    }
+  }
+  .invalid {
+    border-color: red;
+  }
+}

@@ -1,0 +1,21 @@
+.login {
+  @include fixed(0, 0);
+  @include size(100%);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  &__form {
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+  }
+  &__error {
+    font-weight: bold;
+    color: red;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+}

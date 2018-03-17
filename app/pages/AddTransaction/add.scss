@@ -1,0 +1,16 @@
+.add-page {
+  text-align: center;
+  &__success {
+    color: green;
+    font-weight: bold;
+  }
+  &__form {
+    max-width: 300px;
+    margin: auto;
+    text-align: left;
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+}
