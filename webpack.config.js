@@ -99,6 +99,7 @@ const { resolve } = require('path'),
       new ExtractTextPlugin('css/main.css', { allChunks: true }),
       new CopyWebpackPlugin([
         { from: 'index.html', to: 'index.html' },
+        { from: 'fixtures/**/*', to: 'fixtures', flatten: true },
       ]),
       new HtmlWebpackPlugin({
         template: 'index.html',

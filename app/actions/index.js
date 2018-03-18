@@ -20,7 +20,7 @@ const getUser = createAction(GET_USER);
 
 
 export const fetchData = () => dispatch => (
-  axios.get('/app/fixtures/ok.json')
+  axios.get('fixtures/ok.json')
     .then(({ data }) => {
       dispatch(fetch(data));
       return data;
@@ -29,13 +29,13 @@ export const fetchData = () => dispatch => (
 );
 
 export const fetchBanks = () => dispatch => (
-  axios.get('/app/fixtures/banks.json')
+  axios.get('fixtures/banks.json')
     .then(({ data }) => dispatch(getBanks(data)))
     .catch(e => console.error(e))
 );
 
 export const fetchUser = () => dispatch => (
-  axios.get('/app/fixtures/user.json')
+  axios.get('fixtures/user.json')
     .then(({ data }) => {
       dispatch(getUser(data));
       return data;
