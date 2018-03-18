@@ -1,4 +1,8 @@
 # react_transactions_app
-username: admin,
+username: `admin`
 
-password: pass (see settings.js)
+password: `pass`
+
+start: `npm run start`
+
+build: `npm run build`
