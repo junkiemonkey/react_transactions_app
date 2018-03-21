@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { func, array, object } from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import withData from '../../decorators/with_data';
-import withUser from '../../decorators/with_user';
-import { addItem } from '../../actions';
+import { addItem, fetchBanks } from '../../actions';
 
-@withData
-@connect(({ transactions }) => transactions, { addItem })
+
+@connect(({ transactions }) => transactions, { addItem, fetchBanks })
 export default class AddTransaction extends Component {
   static propTypes = {
     bankList: array,
+    fetchBanks: func,
     addItem: func,
   }
 
@@ -20,6 +19,21 @@ export default class AddTransaction extends Component {
     bankId: '',
     bankError: false,
     success: false,
+    bankList: [],
+  }
+
+  componentWillMount() {
+    const { bankList, fetchBanks } = this.props;
+    if (!bankList) {
+      fetchBanks();
+      return null;
+    }
+    this.setState({ bankList });
+  }
+
+  componentWillReceiveProps(props) {
+    const { bankList } = props;
+    if (bankList) this.setState({ bankList });
   }
 
   componentWillUnmount() {
@@ -65,8 +79,8 @@ export default class AddTransaction extends Component {
 
   render() {
     const {
-      props: { bankList },
       state: {
+        bankList,
         amount,
         bankId,
         amountError,

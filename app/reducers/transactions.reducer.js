@@ -1,6 +1,10 @@
 import { handleActions } from 'redux-actions';
 import { FETCH_BANKS, FETCH_DATA, REMOVE_ITEM, ADD_ITEM } from '../constants';
 
+const initalState = {
+  itemsList: [],
+};
+
 export default handleActions({
 
   [FETCH_DATA]: (state, { payload }) => ({
@@ -23,4 +27,4 @@ export default handleActions({
     itemsList: state.itemsList.filter(_item => _item.id !== payload),
   }),
 
-}, {});
+}, initalState);

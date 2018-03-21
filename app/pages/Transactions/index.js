@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
 import { array, func } from 'prop-types';
 import { connect } from 'react-redux';
-import withData from '../../decorators/with_data';
-import { removeItem } from '../../actions';
+import { removeItem, fetchTransactions, fetchBanks } from '../../actions';
 import Table from './components/Table';
 
-@withData
-@connect(({ transactions }) => transactions, { removeItem })
+@connect(({ transactions }) => transactions, { removeItem, fetchTransactions, fetchBanks })
 export default class Transactions extends Component {
   static propTypes = {
     bankList: array,
     itemsList: array,
     removeItem: func,
+    fetchBanks: func,
+    fetchTransactions: func,
+  }
+
+  componentWillMount() {
+    const {
+      fetchTransactions,
+      bankList,
+      fetchBanks,
+    } = this.props;
+    fetchTransactions();
+    if (!bankList) fetchBanks();
   }
 
   removeItem = id => {
@@ -24,11 +34,13 @@ export default class Transactions extends Component {
       removeItem,
     } = this;
 
+    if (!bankList) return 'Loading...';
+
     return (
       <div className="transactions text-center">
         <div className="container">
           <h1 className="title">Транзакции</h1>
-          <Table handler={removeItem} data={itemsList} banks={bankList} />
+          <Table handler={removeItem} transactions={itemsList} bankList={bankList} />
         </div>
 
       </div>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { func, array } from 'prop-types';
 
-const Table = ({ handler, data, banks }) => {
+const Table = ({ handler, transactions, bankList }) => {
   const sortFunc = (a, b) => a.id - b.id;
-  const getBankById = id => banks.find(_item => _item.id === id).value;
+  const getBankById = id => bankList.find(_item => _item.id === id).value;
 
   return (
     <table className="transactions__table">
@@ -14,7 +14,7 @@ const Table = ({ handler, data, banks }) => {
           <th>Amount</th>
           <th />
         </tr>
-        {data.sort(sortFunc).map(_item => (
+        {transactions.sort(sortFunc).map(_item => (
           <tr key={_item.id}>
             <td>{_item.id}</td>
             <td>{getBankById(+_item.bankId)}</td>
@@ -28,8 +28,8 @@ const Table = ({ handler, data, banks }) => {
 };
 
 Table.propTypes = {
-  banks: array,
-  data: array,
+  bankList: array,
+  transactions: array,
   handler: func,
 };
 
