@@ -12,27 +12,29 @@ export default WrappedComponent => {
       user: object,
       isAuth: bool,
       fetchUser: func,
+      location: object,
       history: object,
     }
 
-    async componentWillMount() {
-      const { user, fetchUser } = this.props;
-      if (!user) {
-        await fetchUser();
+    componentWillMount() {
+      const { isAuth, fetchUser } = this.props;
+      if (!isAuth) {
+        fetchUser();
+        return null;
       }
-      this.checkCredentials(this.props.user);
+      this.checkCredentials(isAuth);
     }
 
     componentWillReceiveProps(props) {
-      this.checkCredentials(props.user);
+      this.checkCredentials(props.isAuth);
     }
 
-    checkCredentials = user => {
-      if (!user) this.props.history.push('/login');
+    checkCredentials = isAuth => {
+      const { location, history } = this.props;
+      if (!isAuth && location.pathname !== '/login') history.push('/login');
     }
 
     render() {
-      if (!this.props.user) return null;
       return (
         <WrappedComponent {...this.props} />
       );

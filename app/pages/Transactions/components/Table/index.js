@@ -3,7 +3,7 @@ import { func, array } from 'prop-types';
 
 const Table = ({ handler, data, banks }) => {
   const sortFunc = (a, b) => a.id - b.id;
-  const getBankById = id => banks.filter(_item => _item.id === id)[0].value;
+  const getBankById = id => banks.find(_item => _item.id === id).value;
 
   return (
     <table className="transactions__table">

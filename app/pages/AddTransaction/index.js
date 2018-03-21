@@ -6,7 +6,6 @@ import withData from '../../decorators/with_data';
 import withUser from '../../decorators/with_user';
 import { addItem } from '../../actions';
 
-@withUser
 @withData
 @connect(({ transactions }) => transactions, { addItem })
 export default class AddTransaction extends Component {

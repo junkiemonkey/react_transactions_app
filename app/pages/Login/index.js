@@ -26,14 +26,19 @@ export default class Login extends Component {
   }
 
   componentWillMount() {
-    const { fetchUser, user, history: { push } } = this.props;
+    const {
+      fetchUser,
+      user,
+      history: { push },
+    } = this.props;
     if (user) push('/');
     fetchUser();
   }
 
   componentWillReceiveProps(props) {
-    if (props.isAuth) this.props.fetchUser();
-    if (props.user) this.props.history.push('/');
+    const { fetchUser, history } = this.props;
+    if (props.user) history.push('/');
+    if (props.isAuth) fetchUser();
   }
 
   handleForm = ({ target: { name, value } }) => this.setState({ [name]: value })

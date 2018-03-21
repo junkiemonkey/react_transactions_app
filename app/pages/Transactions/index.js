@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { array, func } from 'prop-types';
 import { connect } from 'react-redux';
 import withData from '../../decorators/with_data';
-import withUser from '../../decorators/with_user';
 import { removeItem } from '../../actions';
 import Table from './components/Table';
 
-@withUser
 @withData
 @connect(({ transactions }) => transactions, { removeItem })
 export default class Transactions extends Component {

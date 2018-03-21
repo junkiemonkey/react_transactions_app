@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Route } from 'react-router-dom';
 import { func } from 'prop-types';
+import withUser from '../decorators/with_user';
 
 
 /**
@@ -11,6 +12,7 @@ import Transactions from './Transactions';
 import AddTransaction from './AddTransaction';
 import Login from './Login';
 
+@withUser
 export default class App extends Component {
   render() {
     return (

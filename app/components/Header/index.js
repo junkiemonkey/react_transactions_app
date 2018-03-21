@@ -29,7 +29,6 @@ export default class Header extends Component {
             <ul className="clearlist">
               <li><NavLink to="/" exact className="header__link">Transactions</NavLink></li>
               <li><NavLink to="/add" className="header__link">Add</NavLink></li>
-              {/*<li><Link to="/" >Home</Link></li>*/}
             </ul>
             <a href="" className="header__link" onClick={this.logoutHandle}>Logout</a>
           </div>

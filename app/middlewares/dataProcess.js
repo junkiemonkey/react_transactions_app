@@ -55,6 +55,4 @@ export default store => next => action => {
 
     default: next(action);
   }
-  // console.log(type);
-  // next({ type, payload });
 };

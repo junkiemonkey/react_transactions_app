@@ -19,7 +19,7 @@ export const logout = createAction(LOGOUT);
 const getUser = createAction(GET_USER);
 
 
-export const fetchData = () => dispatch => (
+export const fetchTransactions = () => dispatch => (
   axios.get('fixtures/ok.json')
     .then(({ data }) => {
       dispatch(fetch(data));

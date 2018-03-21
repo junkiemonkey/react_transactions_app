@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { func, object, array } from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchData, fetchBanks } from '../actions';
+import { fetchTransactions, fetchBanks } from '../actions';
 import { initStorage } from '../utils';
-import { TRANSACTIONS, BANKS } from '../constants';
 
 export default WrappedComponent => {
-  @connect(({ transactions }) => transactions, { fetchData, fetchBanks })
+  @connect(({ transactions }) => transactions, { fetchTransactions, fetchBanks })
   class AsyncComponent extends Component {
     static propTypes = {
       fetchBanks: func,
-      fetchData: func,
+      fetchTransactions: func,
       itemsList: array,
       bankList: array,
     }
@@ -19,21 +18,21 @@ export default WrappedComponent => {
       data: null,
     }
 
-    async componentWillMount() {
+    componentWillMount() {
       initStorage();
 
       const {
         itemsList,
         bankList,
-        fetchData,
+        fetchTransactions,
         fetchBanks,
       } = this.props;
 
       if (!itemsList) {
-        await fetchData();
+        fetchTransactions();
       }
       if (!bankList) {
-        await fetchBanks();
+        fetchBanks();
         return null;
       }
       this.setState({ data: true });
